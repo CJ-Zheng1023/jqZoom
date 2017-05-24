@@ -1,0 +1,15 @@
+.zoom-box{
+    position: relative;
+}
+.zoom-box img{
+    vertical-align: bottom;
+}
+.zoom-box .zoom-selector{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-image: url("images/selector.png");
+    background-repeat: repeat;
+    left: 0;
+    top: 0;
+}

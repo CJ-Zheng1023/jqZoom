@@ -4,11 +4,31 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="css/jquery.jqZoom.css" type="text/css"/>
+    <style>
+        .example{
+            border: 1px solid #000;
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+        }
+    </style>
+
 </head>
 <body>
+    <div class="example">
+        <div class="zoom-box">
+            <img src="css/images/1_lg.jpg" width="400" height="400" />
+            <div class="zoom-selector"></div>
+        </div>
+    </div>
 
 
 <script src="js/jquery-1.8.3.js"></script>
 <script src="js/jquery.jqZoom.js"></script>
+<script>
+    $(function(){
+        $("img").jqZoom();
+    })
+</script>
 </body>
 </html>
