@@ -27,7 +27,10 @@
 <script src="js/jquery.jqZoom.js"></script>
 <script>
     $(function(){
-        $("img").jqZoom();
+        $("img").jqZoom({
+            selectorWidth: 200,
+            selectorHeight: 200
+        });
     })
 </script>
 </body>
