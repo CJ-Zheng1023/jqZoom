@@ -1,11 +1,13 @@
 /**
- * 放大镜插件     v1.0.0
+ * 放大镜插件     v1.1.0
  * @mail cj_zheng1023@hotmail.com
  * @author AfterWin
  *
  *
  *
  * update log
+ *
+ * 2017.5.30    修改通过请求获取的图片获取不到高宽的问题   v.1.1.0
  *
  */
 (function($){
@@ -92,23 +94,24 @@
             left: target.width() + SPACING,
             top: 0
         })
-        var imgSize = _getOriginalSize(target);
-        var $img = $("<img src='"+imgUrl+"' />").width(imgSize.oWidth).height(imgSize.oHeight);
-        $viewer.append($img);
-        target.after($viewer);
+        _setOriginalSize(target, function(oWidth, oHeight){
+            var $img = $("<img src='"+imgUrl+"' />").width(oWidth).height(oHeight);
+            $viewer.append($img);
+            target.after($viewer);
+        });
     }
     /**
-     * 获取图片原始宽高
+     * 设置图片原始宽高
      * @param target       图片jquery对象
+     * @param callback     通过回调函数设置原始宽高
      * @returns {{oWidth: Number, oHeight: Number}}
      * @private
      */
-    var _getOriginalSize = function(target){
+    var _setOriginalSize = function(target, callback){
         var newImg = new Image();
         newImg.src = target.attr("src");
-        return{
-            oWidth: newImg.width,
-            oHeight: newImg.height
+        newImg.onload = function(){
+            callback(newImg.width, newImg.height);
         }
     }
 
