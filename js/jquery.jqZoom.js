@@ -109,10 +109,10 @@
      */
     var _setOriginalSize = function(target, callback){
         var newImg = new Image();
-        newImg.src = target.attr("src");
-        newImg.onload = function(){
+        newImg.src = target.attr("src")+"?date="+new Date();
+        $(newImg).on("load", function(){
             callback(newImg.width, newImg.height);
-        }
+        })
     }
 
 })(jQuery);
